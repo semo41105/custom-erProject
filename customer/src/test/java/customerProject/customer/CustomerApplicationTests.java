@@ -1,10 +1,10 @@
-package cstm.customer;
+package customerProject.customer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CustomerProjectApplicationTests {
+class CustomerApplicationTests {
 
 	@Test
 	void contextLoads() {
