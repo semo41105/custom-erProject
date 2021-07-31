@@ -1,4 +1,4 @@
-package customerProject.customer.domain;
+package customerProject.customer.domain.product;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -6,29 +6,20 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-
 @Entity
 @Getter @Setter
 @NoArgsConstructor
-public class Member {
+public abstract class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "m_no")
+    @Column(name = "p_no")
     private Long no;
-
-    private String id;
-
-    private String pw;
 
     private String name;
 
-    private String phone;
+    private int price;
 
-    private String email;
-
-    @Embedded
-    private Address address;
-
+    private int quantity;
 
 }

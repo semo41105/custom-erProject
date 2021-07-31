@@ -1,4 +1,4 @@
-package customerProject.customer.domain;
+package customerProject.customer.domain.product;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,13 +9,16 @@ import javax.persistence.*;
 @Entity
 @Getter @Setter
 @NoArgsConstructor
-public class Category {
+public class ProductImage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "pc_no")
     private Long no;
 
-    private String name;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "p_no")
+    private Product product;
+
+    private String img;
 
 }
