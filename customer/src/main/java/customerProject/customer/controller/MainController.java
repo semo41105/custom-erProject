@@ -19,7 +19,29 @@ public class MainController {
     }
 
     @GetMapping("/login/signup")
-    public String signup(){
-        return "signup";
+    public String signup(){ return "signup"; }
+
+    @GetMapping("/product/note")
+    public String note(){ return "note"; }
+
+    @GetMapping("/product/sticker")
+    public String sticker(){
+        return "sticker";
     }
+
+    @GetMapping("/product/griptok")
+    public String griptok(){
+        return "griptok";
+    }
+
+    @GetMapping("/product/cup")
+    public String cup(){
+        return "cup";
+    }
+
+    @GetMapping("/product/tshirts")
+    public String tshirts(){
+        return "tshirts";
+    }
+
 }
