@@ -1,15 +1,17 @@
 package customerProject.customer.domain;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 
 @Entity
 @Getter @Setter
-@NoArgsConstructor
+@Builder
+@NoArgsConstructor //기본생성자를 의미
+@AllArgsConstructor  //전체 매개변수 생성자를 의미
+@Table(name = "MEMBER", uniqueConstraints = {@UniqueConstraint(
+        name = "ID_PHONE_EMAIL_UNIQUE", columnNames = {"id", "phone", "email"} )})
 public class Member {
 
     @Id

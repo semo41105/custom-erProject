@@ -13,12 +13,12 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/loginPage")
     public String loginpage(){
         return "login/login";
     }
 
-    @GetMapping("/login/signup")
+    @GetMapping("/login/signupPage")
     public String signup(){
         return "login/signup";
     }
