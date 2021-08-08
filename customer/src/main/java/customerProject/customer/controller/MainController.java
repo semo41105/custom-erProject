@@ -13,35 +13,39 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/loginPage")
     public String loginpage(){
-        return "login";
+        return "login/login";
     }
 
-    @GetMapping("/login/signup")
-    public String signup(){ return "signup"; }
+    @GetMapping("/login/signupPage")
+    public String signup(){
+        return "login/signup";
+    }
 
     @GetMapping("/product/note")
-    public String note(){ return "note"; }
+    public String note(){
+        return "product/note";
+    }
 
     @GetMapping("/product/sticker")
     public String sticker(){
-        return "sticker";
+        return "product/sticker";
     }
 
     @GetMapping("/product/griptok")
     public String griptok(){
-        return "griptok";
+        return "product/griptok";
     }
 
     @GetMapping("/product/cup")
     public String cup(){
-        return "cup";
+        return "product/cup";
     }
 
     @GetMapping("/product/tshirts")
     public String tshirts(){
-        return "tshirts";
+        return "product/tshirts";
     }
 
 }

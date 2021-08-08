@@ -53,25 +53,44 @@
                         <div class="row">
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <form>
-                                    <h1 class="h3 mb-3 fw-normal">로그인</h1>
+                                <form action="newMember" method="post">
+                                    <h1 class="h3 mb-3 fw-normal">회원 가입</h1>
 
-                                    <div class="form-floating">
-                                        <input type="id" class="form-control" id="floatingInput" placeholder="id">
-                                        <label for="floatingInput">Id</label>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-4">Id</label>
+                                        <div class="col-xs-8">
+                                            <input type="id" class="form-control" name="id" required="required">
+                                        </div>
                                     </div>
-                                    <div class="form-floating">
-                                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                                        <label for="floatingPassword">Password</label>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-4">Password</label>
+                                        <div class="col-xs-8">
+                                            <input type="password" class="form-control" name="password" required="required">
+                                        </div>
                                     </div>
-
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-4">Username</label>
+                                        <div class="col-xs-8">
+                                            <input type="text" class="form-control" name="username" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-4">Phone</label>
+                                        <div class="col-xs-8">
+                                            <input type="phone" class="form-control" name="phone" required="required">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-xs-4">Email</label>
+                                        <div class="col-xs-8">
+                                            <input type="email" class="form-control" name="email" required="required">
+                                        </div>
+                                    </div>
                                     <div class="checkbox mb-3">
                                     </div>
                                     <button class="w-100 btn btn-lg btn-primary" type="submit"
-                                            style=" background-color: #FC5030; border: none;">Sign in</button>
+                                            style=" background-color: #FC5030; border: none;">Sign up</button>
                                     <div style="padding-top:20px;padding-left: 65px;">
-                                        <span><a href="">아이디 / 비밀번호 찾기</a></span> &nbsp&nbsp
-                                        <span><a href="/login/signup">회원가입</a></span>
                                     </div>
                                 </form>
                             </div>
