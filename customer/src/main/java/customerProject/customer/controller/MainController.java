@@ -2,6 +2,7 @@ package customerProject.customer.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -14,7 +15,8 @@ public class MainController {
     }
 
     @GetMapping("/loginPage")
-    public String loginpage(){
+    public String loginpage(Model model){
+        model.addAttribute("LoginRequest", new LoginRequest());
         return "login/login";
     }
 
