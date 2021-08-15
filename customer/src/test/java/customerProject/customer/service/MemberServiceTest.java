@@ -23,7 +23,7 @@ class MemberServiceTest {
     MemberService memberService;
 
     @Test
-    @Rollback(false)
+//    @Rollback(false)
     @Transactional
     public void 회원가입() {
         //given

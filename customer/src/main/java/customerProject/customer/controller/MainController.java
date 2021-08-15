@@ -48,4 +48,14 @@ public class MainController {
         return "product/tshirts";
     }
 
+    @GetMapping("/purchasePage")
+    public String purchase(){
+        return "purchase/purchase";
+    }
+
+    @GetMapping("/customPage")
+    public String custom(){
+        return "custom/custom";
+    }
+
 }
