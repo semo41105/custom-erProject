@@ -9,11 +9,11 @@
     <title>Sticker</title>
 
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="/bootstrap/assets/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico"/>
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/bootstrap/css/styles.css" rel="stylesheet"/>
+    <link href="/css/styles.css" rel="stylesheet"/>
 
 </head>
 
@@ -22,11 +22,11 @@
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
-<script src="/bootstrap/js/scripts.js"></script>
+<script src="/js/scripts.js"></script>
 
 <main class="flex-shrink-0">
     <!-- Header -->
-    <div th:insert="header/header :: header"></div>
+    <div th:replace="header/header.html"></div>
 
     <!--Body section-->
     <section class="py-5" id="features">
@@ -54,7 +54,7 @@
                         </div>
                     </div>
                     <div class="col my-4">
-                        <button type="submit" class="btn btn-primary" style="background-color: #FC5030; border: none;">
+                        <button type="submit" class="btn btn-primary" style="background-color: #FC5030; border: none;" onclick="location.href='/customPage'">
                             나만의 상품 만들기
                         </button>
                     </div>
