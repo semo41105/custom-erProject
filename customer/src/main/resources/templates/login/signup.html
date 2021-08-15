@@ -23,7 +23,7 @@
                 <div class="container px-5" style="padding-top: 70px; padding-bottom: 100px;">
                     <!-- login form-->
                     <div class="container">
-                        <div class="row" style="p">
+                        <div class="row">
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
                                 <form action="/newMember" th:object="${UserDto}" method="post">
@@ -32,49 +32,49 @@
                                     <div class="form-group">
                                         <label class="control-label col-xs-4">Id</label>
                                         <div class="col-xs-8">
-                                            <input type="id" class="form-control" name="id" required="required">
+                                            <input type="id" class="form-control" name="id" required="required" th:field="*{id}" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-xs-4">Password</label>
                                         <div class="col-xs-8">
-                                            <input type="password" class="form-control" name="password" required="required">
+                                            <input type="password" class="form-control" name="password" required="required" th:field="*{pw}" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-xs-4">Username</label>
                                         <div class="col-xs-8">
-                                            <input type="text" class="form-control" name="username" required="required">
+                                            <input type="text" class="form-control" name="username" required="required" th:field="*{userName}" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-xs-4">Phone</label>
                                         <div class="col-xs-8">
-                                            <input type="phone" class="form-control" name="phone" required="required">
+                                            <input type="phone" class="form-control" name="phone" required="required" th:field="*{phone}" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-xs-4">Email</label>
                                         <div class="col-xs-8">
-                                            <input type="email" class="form-control" name="email" required="required">
+                                            <input type="email" class="form-control" name="email" required="required" th:field="*{email}" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-xs-4">City</label>
                                         <div class="col-xs-8">
-                                            <input type="address" class="form-control" name="city" required="required">
+                                            <input type="address" class="form-control" name="city" required="required" th:field="*{city}" >
                                         </div>
                                     </div>
                                      <div class="form-group">
                                         <label class="control-label col-xs-4">Street</label>
                                         <div class="col-xs-8">
-                                            <input type="address" class="form-control" name="street" required="required">
+                                            <input type="address" class="form-control" name="street" required="required" th:field="*{street}" >
                                         </div>
                                     </div>
                                      <div class="form-group">
                                         <label class="control-label col-xs-4">Zipcode</label>
                                         <div class="col-xs-8">
-                                            <input type="address" class="form-control" name="zipcode" required="required">
+                                            <input type="address" class="form-control" name="zipcode" required="required" th:field="*{zipcode}" >
                                         </div>
                                     </div>
 
