@@ -1,5 +1,7 @@
 package customerProject.customer.controller;
 
+import customerProject.customer.dto.LoginRequest;
+import customerProject.customer.dto.UserDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +23,8 @@ public class MainController {
     }
 
     @GetMapping("/login/signupPage")
-    public String signup(){
+    public String signup(Model model){
+        model.addAttribute("UserDto", new UserDto());
         return "login/signup";
     }
 
