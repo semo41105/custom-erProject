@@ -34,51 +34,36 @@
             <div class="row mb-5"><h2 class="fw-bolder">의류 - 티셔츠</h2></div>
             <div class="row" style="height: 700px">
                 <div class="col-lg-7 mb-5 mb-lg-0 text-center" id="productImgBox">
-                    <img src="../../../img/shortTshirt.png" style="width: 100%; height:100%; object-fit:cover;">
+                    <img src="../../../img/LongTshirt.png" style="width: 100%; height:100%; object-fit:cover;">
                 </div>
                 <div class="col-lg-1 mb-5 mb-lg-0"></div>
                 <div class="col-lg-4" style="height: 300px">
                     <h4 class="fw-bolder mb-3">제작 옵션 선택</h4>
-                    <div id="checkBoxDiv">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                            <label class="form-check-label" for="flexRadioDefault1">
-                                긴팔
-                            </label>
+                    <form action="/customPage">
+                        <input type="hidden" id="korName" name="korName" value="티셔츠">
+                        <div id="checkBoxDiv">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="name" value="LongTshirt" id="Radio1"
+                                       checked>
+                                <label class="form-check-label" for="Radio1">
+                                    긴팔
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="name" value="ShortTshirt"
+                                       id="Radio2">
+                                <label class="form-check-label" for="Radio2">
+                                    반팔
+                                </label>
+                            </div>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                            <label class="form-check-label" for="flexRadioDefault2">
-                                반팔
-                            </label>
+                        <div class="col my-4">
+                            <button type="submit" class="btn btn-primary"
+                                    style="background-color: #FC5030; border: none;">
+                                나만의 상품 만들기
+                            </button>
                         </div>
-                    </div>
-                    <h4 class="fw-bolder my-3">사이즈</h4>
-                    <div id="sizeCheckBoxDiv">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioSize" id="flexRadioSize1" checked>
-                            <label class="form-check-label" for="flexRadioSize1">
-                                S
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioSize" id="flexRadioSize2">
-                            <label class="form-check-label" for="flexRadioSize2">
-                                M
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="flexRadioSize" id="flexRadioSize3">
-                            <label class="form-check-label" for="flexRadioSize3">
-                                L
-                            </label>
-                        </div>
-                    </div>
-                    <div class="col my-4">
-                        <button type="submit" class="btn btn-primary" style="background-color: #FC5030; border: none;" onclick="location.href='/customPage'">
-                            나만의 상품 만들기
-                        </button>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
