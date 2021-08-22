@@ -1,5 +1,6 @@
 package customerProject.customer.domain.product;
 
+import customerProject.customer.domain.enums.TSize;
 import customerProject.customer.domain.enums.TType;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ public class Tshirts extends Product{
     @Enumerated(EnumType.STRING)
     private TType tType;
 
-    private int tSize;
+    @Enumerated(EnumType.STRING)
+    private TSize tSize;
 
 }

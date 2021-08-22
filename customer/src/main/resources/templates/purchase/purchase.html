@@ -1,45 +1,109 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content />
-    <meta name="author" content />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content/>
+    <meta name="author" content/>
     <title>Modern Business - Start Bootstrap Template</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico"/>
     <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet"/>
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
     <div th:replace="header/header.html"></div>
 
-    <!-- Page content-->
-    <section class="py-5">
-        <div class="container px-5" style="padding-top: 120px;">
-            <!-- login form-->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12"></div>
-                    <div class="col-sm-12">
-                    </div>
-                    <div class="col-sm-12">
 
+    <!-- Page content-->
+    <!--Body section-->
+    <section class="py-5" id="features">
+        <div class="container px-5 my-2">
+            <div class="row mb-5"><h2 class="fw-bolder">주문하기</h2></div>
+            <div class="row" style="height: 700px">
+
+                <div class="col-lg-1 mb-5 mb-lg-0"></div>
+
+                <div class="col-lg-4" style="height: 300px">
+                    <h4 class="fw-bolder mb-3">주문 내역</h4>
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <th scope="col-xs-8">상품명</th>
+                            <th scope="col-xs-8">수량</th>
+                            <th th:if="${ProductRequest.type != null}" scope="col-xs-8">타입</th>
+                            <th th:if="${ProductRequest.size != null}" scope="col-xs-8">사이즈</th>
+                        </tr>
+                        <tr>
+                            <td scope="col-xs-8">[[${ProductRequest.name}]]</td>
+                            <td scope="col-xs-8">[[${ProductRequest.quantity}]]</td>
+                            <td th:if="${ProductRequest.type != null}" scope="col-xs-8">[[${ProductRequest.type}]]</td>
+                            <td th:if="${ProductRequest.size != null}" scope="col-xs-8">[[${ProductRequest.size}]]</td>
+                        </tr>
+                    </table>
+
+
+                    <div>
+                        <h4 class="fw-bolder mb-3">배송 정보</h4>
+                        <form action="" th:object="${PurchaseDto}" method="post">
+                        <div class="form-group">
+                            <label class="control-label col-xs-4">주문자</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" name="name" required="required" th:value="${session.loginUser.name}" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-4">연락처</label>
+                            <div class="col-xs-8">
+                                <input type="phone" class="form-control" name="phone" required="required" th:value="${session.loginUser.phone}" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-4">도시</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" name="city" required="required" th:value="${session.loginUser.city}" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-4">도로명 주소</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" name="street" required="required" th:value="${session.loginUser.street}" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-xs-4">우편번호</label>
+                            <div class="col-xs-8">
+                                <input type="text" class="form-control" name="zipcode" required="required" th:value="${session.loginUser.zipcode}" >
+                            </div>
+                        </div>
+
+                        <div class="checkbox mb-3">
+                        </div>
+                        <button class="w-100 btn btn-lg btn-primary" type="submit"
+                                style=" background-color: #FC5030; border: none;">주문하기</button>
+                        </form>
                     </div>
-                    <div class="col-sm-12"></div>
+
                 </div>
+
+
             </div>
         </div>
     </section>
+
+
 </main>
+
+
 <!-- Footer-->
 <footer class="bg-dark py-4 mt-auto">
     <div class="container px-5">
         <div class="row align-items-center justify-content-between flex-column flex-sm-row">
-            <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2021</div></div>
+            <div class="col-auto">
+                <div class="small m-0 text-white">Copyright &copy; Your Website 2021</div>
+            </div>
             <div class="col-auto">
                 <a class="link-light small" href="#!">Privacy</a>
                 <span class="text-white mx-1">&middot;</span>
@@ -59,5 +123,7 @@
 <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+
 </body>
 </html>

@@ -26,7 +26,6 @@ public class MemberController {
 
     @PostMapping("/login")
     public String login(LoginRequest loginDto, HttpSession session, Model model) {
-        System.out.println(loginDto.toString());
         UserDto loginUser = memberService.login(loginDto);
 
         if(loginUser != null) {

@@ -1,8 +1,10 @@
 package customerProject.customer.controller;
 
 import customerProject.customer.dto.LoginRequest;
+import customerProject.customer.dto.ProductRequest;
 import customerProject.customer.dto.UserDto;
 import lombok.AllArgsConstructor;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,7 +61,11 @@ public class MainController {
     }
 
     @GetMapping("/customPage")
-    public String custom(){
+    public String custom(Model model, @Param("name")String name, @Param("korName")String korName){
+        model.addAttribute("name", name);
+        model.addAttribute("korName", korName);
+        model.addAttribute("imgSrc", "/img/"+name+".png");
+        model.addAttribute("ProductRequest", new ProductRequest());
         return "custom/custom";
     }
 

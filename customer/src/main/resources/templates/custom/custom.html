@@ -17,15 +17,63 @@
 <main class="flex-shrink-0">
     <div th:replace="header/header.html"></div>
 
-    <!-- Page content-->
-    <section class="py-5">
-        <div class="container px-5" style="padding-top: 120px;">
-            <!-- login form-->
-            <div class="container">
 
+    <!--Body section-->
+    <section class="py-5" id="features">
+        <div class="container px-5 my-2">
+            <div class="row mb-5"><h2 class="fw-bolder">나만의 상품 만들기</h2></div>
+            <div class="row" style="height: 700px">
+                <div class="col-lg-7 mb-5 mb-lg-0 text-center" id="productImgBox">
+                    <img th:src="${imgSrc}" style="width: 100%; height:100%; object-fit:cover;">
+                </div>
+                <div class="col-lg-1 mb-5 mb-lg-0"></div>
+
+                <div class="col-lg-4" style="height: 300px">
+                    <h4 class="fw-bolder mb-3">제작하기</h4>
+                    <form action="/order" th:object="${ProductRequest}" method="post">
+                        <h5>상품 : [[${korName}]]</h5>
+                        <input type="hidden" th:name="name" th:value="${korName}">
+                        <p>원하는 사진을 업로드하세요.</p>
+                        <div class="col my-4">
+                            <input type="file" th:field="*{img}" class="form-control">
+                        </div>
+                        <div>
+                            <span>수량 선택</span>
+                            <input type="number" name="count" th:field="*{quantity}" class="form-control" id="count" placeholder="주문 수량을 입력하세요" style="width: 220px;">
+                        </div>
+                        <div th:if="${name.equals('LongTshirt')} or ${name.equals('ShortTshirt')}" >
+                            <input th:if="${name.equals('LongTshirt')}" type="hidden" name="type" value="LONG">
+                            <input th:unless="${name.equals('LongTshirt')}" type="hidden" name="type" value="SHORT">
+                            <h4 class="fw-bolder my-3">사이즈</h4>
+                            <div id="sizeCheckBoxDiv">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="size" th:field="*{size}" id="flexRadioSize1" value="S" checked>
+                                    <label class="form-check-label" for="flexRadioSize1">
+                                        S
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="size" th:field="*{size}" id="flexRadioSize2" value="M">
+                                    <label class="form-check-label" for="flexRadioSize2">
+                                        M
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="size" th:field="*{size}" id="flexRadioSize3" value="L">
+                                    <label class="form-check-label" for="flexRadioSize3">
+                                        L
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="background-color: #FC5030; border: none;">주문하기</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
+
+
 </main>
 <!-- Footer-->
 <footer class="bg-dark py-4 mt-auto">
