@@ -6,14 +6,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AdminController {
 
-    @GetMapping("/admin/adminIndex")
+    @GetMapping("/admin")
     public String adminIndex() {
         return "admin/adminIndex";
     }
 
-    @GetMapping("/admin/adminProduct")
-    public String adminProduct() {
-        return "admin/adminProduct";
+    @GetMapping("/admin/adminDelivery")
+    public String adminDelivery() {
+        return "admin/adminDelivery";
     }
 
     @GetMapping("/admin/adminOrder")

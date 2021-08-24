@@ -1,36 +1,23 @@
+
+
 <head th:fragment="headerSidebar">
 
 
 
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" style="height: 100px; ">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3" href="/admin/adminIndex">CUSTOM-ER</a>
+    <a class="navbar-brand" href="/">
+        <img class="img-fluid rounded-3" src="/img/logo.png" alt="로고" style="width: 200px; height: 200px; "/></a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
             class="fas fa-bars"></i></button>
-    <!-- Navbar Search-->
-    <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-        <div class="input-group">
-            <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..."
-                   aria-describedby="btnNavbarSearch"/>
-            <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-        </div>
-    </form>
-    <!-- Navbar-->
-    <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
-               aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#!">Settings</a></li>
-                <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                <li>
-                    <hr class="dropdown-divider"/>
-                </li>
-                <li><a class="dropdown-item" href="#!">Logout</a></li>
-            </ul>
-        </li>
-    </ul>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+        <button th:if="${session.loginUser == null}" type="button" class="btn btn-primary" style="transform: translate(1500px, 0px); background-color: #FC5030; border: none;"
+                onclick="location.href='/loginPage'">로그인</button>
+        <span th:if="${session.loginUser != null}" style="color: white; transform: translate(1280px, 0px);">[[${session.loginUser.name}]]님 안녕하세요!</span>
+        <button  th:if="${session.loginUser != null}" type="button" class="btn btn-primary" style="transform: translate(1300px, 0px); background-color: #ffffff; color:#000000; border: none;"
+                 onclick="location.href='/logout'">로그아웃</button>
+    </div>
 </nav>
 
 
@@ -41,15 +28,14 @@
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
             <div class="sb-sidenav-menu">
                 <div class="nav">
-                    <div class="sb-sidenav-menu-heading">Core</div>
-                    <a class="nav-link" href="/admin/adminProduct">
-                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                        상품/재고 관리
-                    </a>
-                    <div class="sb-sidenav-menu-heading">Interface</div>
+                    <div class="sb-sidenav-menu-heading" style="padding-top: 80px;">Interface</div>
                     <a class="nav-link" href="/admin/adminOrder">
                         <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                         상품 주문 관리
+                    </a>
+                    <a class="nav-link" href="/admin/adminDelivery">
+                        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                        상품 배송 관리
                     </a>
                     <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
                          data-bs-parent="#sidenavAccordion">
@@ -97,20 +83,7 @@
                             </div>
                         </nav>
                     </div>
-                    <div class="sb-sidenav-menu-heading">Addons</div>
-                    <a class="nav-link" href="charts.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                        Charts
-                    </a>
-                    <a class="nav-link" href="tables.html">
-                        <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                        Tables
-                    </a>
                 </div>
-            </div>
-            <div class="sb-sidenav-footer">
-                <div class="small">Logged in as:</div>
-                Start Bootstrap
             </div>
         </nav>
     </div>
