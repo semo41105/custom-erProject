@@ -7,18 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AdminController {
 
     @GetMapping("/admin")
-    public String adminIndex() {
-        return "admin/adminIndex";
+    public String adminOrder() {
+        return "admin/adminOrder";
     }
 
     @GetMapping("/admin/adminDelivery")
     public String adminDelivery() {
         return "admin/adminDelivery";
-    }
-
-    @GetMapping("/admin/adminOrder")
-    public String adminOrder() {
-        return "admin/adminOrder";
     }
 
 }
