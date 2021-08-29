@@ -36,6 +36,7 @@
                             <tr>
                                 <th>배송 번호</th>
                                 <th>주문 번호</th>
+                                <th>회원 번호</th>
                                 <th>주문 날짜</th>
                                 <th>배송 상태</th>
                             </tr>
@@ -43,6 +44,7 @@
                             <tr th:each="deliverys : ${deliverys}">
                                 <td th:text="${deliverys.deliveryNo}"></td>
                                 <td th:text="${deliverys.orderNo}"></td>
+                                <td th:text="${deliverys.memberNo}"></td>
                                 <td th:text="${deliverys.orderDate}"></td>
                                 <td th:text="${deliverys.deliveryStatus}"></td>
                             </tr>

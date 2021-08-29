@@ -18,7 +18,7 @@ public class DeliveryService {
 
     @Transactional
     public List<DeliveryHistoryResponse> findDeliveryHistoryAll(){
-        return deliveryRepository.findDeliveryHistoryList();
+        return deliveryRepository.findDeliveryHistoryList2();
     }
 
 }
