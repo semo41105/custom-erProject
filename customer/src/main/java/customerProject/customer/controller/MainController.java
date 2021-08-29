@@ -69,4 +69,9 @@ public class MainController {
         return "custom/custom";
     }
 
+    @GetMapping("/myPage")
+    public String myPage() {
+        return "myPage/myPage";
+    }
+
 }
