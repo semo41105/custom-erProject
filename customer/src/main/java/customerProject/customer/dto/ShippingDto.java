@@ -16,6 +16,7 @@ public class ShippingDto {
     private String orderStatus;
     private String shippingStatus;
 
+    private Long no;
     private String id;
     private String name;
     private String phone;
