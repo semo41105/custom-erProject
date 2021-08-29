@@ -33,6 +33,8 @@
                     <form action="/order" th:object="${ProductRequest}" method="post">
                         <h5>상품 : [[${korName}]]</h5>
                         <input type="hidden" th:name="name" th:value="${korName}">
+                        <input type="hidden" th:name="price" th:value="${price}">
+                        <input type="hidden" th:name="productNo" th:value="${productNo}">
                         <p>원하는 사진을 업로드하세요.</p>
                         <div class="col my-4">
                             <input type="file" th:field="*{img}" class="form-control">

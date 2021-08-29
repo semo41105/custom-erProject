@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserDto {
 
+    private Long no;
     private String id;
     private String pw;
     private String name;
@@ -22,7 +23,8 @@ public class UserDto {
     private String zipcode;
 
     @Builder
-    public UserDto(String id, String pw, String name, String phone, String email, String city, String street, String zipcode) {
+    public UserDto(Long no, String id, String pw, String name, String phone, String email, String city, String street, String zipcode) {
+        this.no = no;
         this.id = id;
         this.pw = pw;
         this.name = name;
@@ -50,6 +52,7 @@ public class UserDto {
     @Builder
     public static UserDto toDto(Member member) {
         return UserDto.builder()
+                .no(member.getNo())
                 .id(member.getId())
                 .pw(member.getPw())
                 .name(member.getName())

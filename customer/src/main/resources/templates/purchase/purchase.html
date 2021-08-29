@@ -63,8 +63,11 @@
                                 style=" background-color: #FC5030; border: none;">새로운 배송지 입력하기</button>
                         <form action="/purchase" th:object="${ShippingDto}" method="post">
 
+                            <input type="hidden" name="no" th:value="${session.loginUser.no}">
                             <input type="hidden" name="productName" th:value="${ProductRequest.name}">
                             <input type="hidden" name="productQuantity" th:value="${ProductRequest.quantity}">
+                            <input type="hidden" name="productPrice" th:value="${ProductRequest.price}">
+                            <input type="hidden" name="dtype" th:value="${ProductRequest.dtype}">
                             <input type="hidden" th:if="${ProductRequest.type != null}" name="productType" th:value="${ProductRequest.type}">
                             <input type="hidden" th:if="${ProductRequest.size != null}" name="productSize" th:value="${ProductRequest.size}">
 
