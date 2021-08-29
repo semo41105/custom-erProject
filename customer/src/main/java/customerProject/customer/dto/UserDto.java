@@ -47,7 +47,8 @@ public class UserDto {
     }
 
     //Member 엔티티에 빌더패턴 넣지 않고, 여기다가 만들고 대신 매개변수로 Member 객체형태를 받는 방식으로 만듦
-    public UserDto toDto(Member member) {
+    @Builder
+    public static UserDto toDto(Member member) {
         return UserDto.builder()
                 .id(member.getId())
                 .pw(member.getPw())

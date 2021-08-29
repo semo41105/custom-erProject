@@ -22,11 +22,6 @@ public class MemberService {
     public Long newMember(UserDto requestDto) {
         Long result = memberRepository.save(requestDto.toEntity()).getNo();
 
-//        if (result != 0) {
-//            model.addAttribute("message", "회원가입 성공!");
-//        } else {
-//            model.addAttribute("message", "회원가입 실패!");
-//        }
         return result;
     }
 
@@ -35,7 +30,8 @@ public class MemberService {
         Member loginUser = memberRepository.findUser(loginDto.getId(), loginDto.getPw());
         UserDto userDto = null;
         if (loginUser != null) {
-            userDto = modelMapper.map(loginUser, UserDto.class);
+            //userDto = modelMapper.map(loginUser, UserDto.class);
+            userDto = UserDto.toDto(loginUser);
         }
         return userDto;
     }
