@@ -20,7 +20,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent1">
                     <button th:if="${session.loginUser == null}" type="button" class="btn btn-primary" style="transform: translate(1050px, 0px); background-color: #FC5030; border: none;"
                             onclick="location.href='/loginPage'">로그인</button>
-                    <span th:if="${session.loginUser != null}" style="color: white">[[${session.loginUser.name}]]님 안녕하세요!</span>
+                    <span th:if="${session.loginUser != null}" style="color: white; transform: translate(1030px, 0px);">[[${session.loginUser.name}]]님 안녕하세요!</span>
                     <button  th:if="${session.loginUser != null}" type="button" class="btn btn-primary" style="transform: translate(1050px, 0px); background-color: #ffffff; color:#000000; border: none;"
                             onclick="location.href='/logout'">로그아웃</button>
                 </div>
