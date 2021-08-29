@@ -15,6 +15,7 @@ public class Delivery {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "d_no")
     private Long no;
 
     @OneToOne(fetch = FetchType.LAZY)

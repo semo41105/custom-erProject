@@ -12,6 +12,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/css/styles.css" rel="stylesheet"/>
+    <!-- JQuery-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script>
+    function newAddress() {
+        $('input[name=name]').val('');
+        $('input[name=phone]').val('');
+        $('input[name=city]').val('');
+        $('input[name=street]').val('');
+        $('input[name=zipcode]').val('');
+    }
+    </script>
+
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
@@ -47,7 +59,15 @@
 
                     <div>
                         <h4 class="fw-bolder mb-3">배송 정보</h4>
-                        <form action="" th:object="${PurchaseDto}" method="post">
+                        <button class="btn btn-sm btn-primary" onclick="newAddress();"
+                                style=" background-color: #FC5030; border: none;">새로운 배송지 입력하기</button>
+                        <form action="/purchase" th:object="${ShippingDto}" method="post">
+
+                            <input type="hidden" name="productName" th:value="${ProductRequest.name}">
+                            <input type="hidden" name="productQuantity" th:value="${ProductRequest.quantity}">
+                            <input type="hidden" th:if="${ProductRequest.type != null}" name="productType" th:value="${ProductRequest.type}">
+                            <input type="hidden" th:if="${ProductRequest.size != null}" name="productSize" th:value="${ProductRequest.size}">
+
                         <div class="form-group">
                             <label class="control-label col-xs-4">주문자</label>
                             <div class="col-xs-8">
