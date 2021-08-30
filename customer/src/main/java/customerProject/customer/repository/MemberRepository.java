@@ -13,6 +13,6 @@ public interface MemberRepository extends JpaRepository<Member, Long> {
     Member findUser(@Param("id")String id, @Param("pw")String pw);
 
     @Query("select m from Member m where m.no = :no")
-    Member findByNo(Long no);
+    Member findByNo(@Param("no") Long no);
 
 }

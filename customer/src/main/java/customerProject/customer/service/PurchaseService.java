@@ -26,11 +26,14 @@ public class PurchaseService {
 
     @Transactional
     public int newOrder(ShippingDto dto){
+        //총 가격 입력
+        int totalPrice = dto.getProductPrice() * dto.getProductQuantity();
+        dto.setTotalPrice(totalPrice);
 
         Member member = memberRepository.findByNo(dto.getNo());
         Orders ordersResult = ordersRepository.save(dto.toOrdersEntity(member));
 
-        Product product = productRepository.findByDtype(dto.getDtype());
+        Product product = productRepository.findByPno(dto.getPNo());
         OrdersProduct ordersProductResult = ordersProductRepository.save(dto.toOrdersProductEntity(ordersResult, product));
 
         Delivery deliveryResult = deliveryRepository.save(dto.toDeliveryEntity(ordersResult));

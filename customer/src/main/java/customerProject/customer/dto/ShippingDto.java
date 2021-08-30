@@ -31,7 +31,7 @@ public class ShippingDto {
     private String street;
     private String zipcode;
 
-    private String dtype;
+    private Long pNo;
     private String productName;
     private int productQuantity;
     private TType productType;
@@ -41,7 +41,7 @@ public class ShippingDto {
     private int totalPrice;
 
     @Builder
-    public ShippingDto(int orderNum, String orderDate, String orderStatus, String shippingStatus, Long no, String name, String phone, String city, String street, String zipcode, String productName, int productQuantity, TType productType, TSize productSize, int productPrice, int totalPrice) {
+    public ShippingDto(int orderNum, String orderDate, String orderStatus, String shippingStatus, Long no, String name, String phone, String city, String street, String zipcode, String productName, int productQuantity, TType productType, TSize productSize, int productPrice, int totalPrice, Long pNo) {
         this.orderNum = orderNum;
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
@@ -58,6 +58,7 @@ public class ShippingDto {
         this.productSize = productSize;
         this.productPrice = productPrice;
         this.totalPrice = totalPrice;
+        this.pNo = pNo;
     }
 
     //주문, 주문_상품, 배송
