@@ -3,6 +3,7 @@ package customerProject.customer.service.myPage;
 import customerProject.customer.domain.Delivery;
 import customerProject.customer.domain.Orders;
 import customerProject.customer.domain.OrdersProduct;
+import customerProject.customer.domain.enums.OrderStatus;
 import customerProject.customer.domain.product.Product;
 import customerProject.customer.dto.UserDto;
 import customerProject.customer.dto.historyDto.OrderHistoryResponse;
@@ -13,8 +14,8 @@ import customerProject.customer.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -34,12 +35,13 @@ public class OrderHistoryService {
 
     //주문내역 리스트 생성
     private List<OrderHistoryResponse> createOrderHistoryList(List<Orders> orders) {
-        List<OrderHistoryResponse> orderHistoryResponseList = null;
+        List<OrderHistoryResponse> orderHistoryResponseList = new ArrayList<>();
 
         for (int i = 0; i < orders.size(); i ++){
             OrdersProduct ordersProduct = ordersProductRepository.findByOrdersNo(orders.get(i).getNo());
-            Optional<Product> productOptional = productRepository.findById(ordersProduct.getProduct().getNo());
-            Product product = productOptional.get();
+            Product product = productRepository.findById(ordersProduct.getProduct().getNo()).orElseThrow(
+                    () -> new IllegalArgumentException("상품이 없습니다")
+            );
             Delivery delivery = deliveryRepository.findByOrdersNo(orders.get(i).getNo());
 
             OrderHistoryResponse orderHistoryResponse = OrderHistoryResponse.builder()
@@ -61,6 +63,13 @@ public class OrderHistoryService {
     }
 
 
+    public void orderCancel(Long orderNo) {
+        Orders orders = ordersRepository.findById(orderNo).orElseThrow(
+                () -> new IllegalArgumentException("주문취소 실패")
+        );
 
+        orders.setStatus(OrderStatus.CANCEL);
 
+        ordersRepository.save(orders);
+    }
 }
