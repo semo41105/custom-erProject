@@ -1,5 +1,7 @@
 package customerProject.customer.service;
 
+import customerProject.customer.domain.Delivery;
+import customerProject.customer.domain.enums.DeliveryStatus;
 import customerProject.customer.dto.historyDto.DeliveryHistoryResponse;
 import customerProject.customer.repository.DeliveryRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,5 +23,15 @@ public class DeliveryService {
         return deliveryRepository.findDeliveryHistoryList();
     }
 
+    @
+    Transactional
+    public void deliveryUpdate(Long deliveryNo){
+        Delivery delivery = deliveryRepository.findById(deliveryNo).orElseThrow(
+                () -> new IllegalArgumentException("배송 상태 수정 실패")
+        );
+        delivery.setDeliveryStatus(DeliveryStatus.COMPLETE);
+
+        deliveryRepository.save(delivery);
+    }
 
 }

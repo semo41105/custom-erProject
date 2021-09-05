@@ -12,67 +12,115 @@
     <link href="/css/adminStyles.css" rel="stylesheet"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
             crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+
+    <script>
+    window.addEventListener('DOMContentLoaded', function (){
+
+      var deliveryBtns = document.querySelectorAll('button[name=deliveryBtn]');
+
+      for (const deliveryBtn of deliveryBtns) {
+        deliveryBtn.addEventListener('click', function (){
+
+          var deliveryNo = this.dataset.deliveryno;
+          var deliveryStats = document.querySelector('p[data-deliverynostatus="' + deliveryNo + '"]').innerText;
+          console.log(deliveryStats);
+
+          if (deliveryStats == 'COMPLETE') {
+            alert('배송 상태 변경 실패');
+          }else{
+            deliveryUpdate(deliveryNo);
+          }
+        });
+      }
+    });
+
+    function deliveryUpdate(deliveryNo) {
+      var request = {'deliveryNo': deliveryNo};
+
+      $.ajax({
+        type: "PATCH",
+        url: "/deliveryUpdate",
+        data: JSON.stringify(request),
+        contentType : "application/json; charset=utf-8",
+        // dataType: "text",
+        // dataType을 지정하지 않으면 자동으로 알아서 파싱함 (dataType을 지정하지 않는게 오히려 좋을 수도?)
+        success: function (response){
+          console.log(response);
+          alert("배송을 완료했습니다.");
+          location.reload();
+        }
+      });
+    }
+
+    </script>
 </head>
 <body class="sb-nav-fixed">
 
-    <div th:replace="admin/headerSidebar.html"></div>
+<div th:replace="admin/headerSidebar.html"></div>
 
 
-    <div id="layoutSidenav_content">
-        <main style=" padding-top: 50px;">
-            <div class="container-fluid px-4">
-                <h1 class="mt-4">상품 배송 관리</h1><br>
-                <ol class="breadcrumb mb-4">
-                    <li class="breadcrumb-item active">Dashboard</li>
-                </ol>
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <i class="fas fa-table me-1"></i>
-                        CSTM-ER 주문상품 배송 상태 목록
-                    </div>
-                    <div class="card-body">
-                        <table id="datatablesSimple">
-                            <thead>
-                            <tr>
-                                <th>배송 번호</th>
-                                <th>주문 번호</th>
-                                <th>주문 날짜</th>
-                                <th>주문 상태</th>
-                                <th>주소 - 도시명</th>
-                                <th>주소 - 도로명</th>
-                                <th>주소 - 상세주소</th>
-                                <th>배송 상태</th>
-                            </tr>
-                            <tbody>
-                            <tr th:each="deliverys : ${deliverys}">
-                                <td th:text="${deliverys.deliveryNo}"></td>
-                                <td th:text="${deliverys.orderNo}"></td>
-                                <td th:text="${deliverys.orderDate}"></td>
-                                <td th:text="${deliverys.orderStatus}"></td>
-                                <td th:text="${deliverys.address.city}"></td>
-                                <td th:text="${deliverys.address.street}"></td>
-                                <td th:text="${deliverys.address.zipcode}"></td>
-                                <td th:text="${deliverys.deliveryStatus}"></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
+<div id="layoutSidenav_content">
+    <main style=" padding-top: 50px;">
+        <div class="container-fluid px-4">
+            <h1 class="mt-4">상품 배송 관리</h1><br>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table me-1"></i>
+                    CSTM-ER 주문상품 배송 상태 목록
+                </div>
+                <div class="card-body">
+                    <table id="datatablesSimple">
+                        <thead>
+                        <tr>
+                            <th>배송 번호</th>
+                            <th>주문 번호</th>
+                            <th>주문 날짜</th>
+                            <th>주문 상태</th>
+                            <th>주소 - 도시명</th>
+                            <th>주소 - 도로명</th>
+                            <th>주소 - 상세주소</th>
+                            <th>배송 상태</th>
+                        </tr>
+                        <tbody>
+                        <tr th:each="deliverys : ${deliverys}">
+                            <td th:text="${deliverys.deliveryNo}"></td>
+                            <td th:text="${deliverys.deliveryNo}"></td>
+                            <td th:text="${deliverys.orderDate}"></td>
+                            <td th:text="${deliverys.orderStatus}"></td>
+                            <td th:text="${deliverys.address.city}"></td>
+                            <td th:text="${deliverys.address.street}"></td>
+                            <td th:text="${deliverys.address.zipcode}"></td>
+                            <td>
+                                <p th:data-deliverynostatus="${deliverys.deliveryNo}" th:text="${deliverys.deliveryStatus}"></p>
+                                <button th:if="${deliverys.deliveryStatus.toString().equals('READY')}" name="deliveryBtn" class="btn btn-primary"
+                                        th:data-deliveryno="${deliverys.deliveryNo}"style="background-color: #FC5030; border: none;">배송 완료 처리</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </main>
-        <footer class="py-4 bg-light mt-auto">
-            <div class="container-fluid px-4">
-                <div class="d-flex align-items-center justify-content-between small">
-                    <div class="text-muted">Copyright &copy; Your Website 2021</div>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        &middot;
-                        <a href="#">Terms &amp; Conditions</a>
-                    </div>
+        </div>
+    </main>
+    <footer class="py-4 bg-light mt-auto">
+        <div class="container-fluid px-4">
+            <div class="d-flex align-items-center justify-content-between small">
+                <div class="text-muted">Copyright &copy; Your Website 2021</div>
+                <div>
+                    <a href="#">Privacy Policy</a>
+                    &middot;
+                    <a href="#">Terms &amp; Conditions</a>
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
+</div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>

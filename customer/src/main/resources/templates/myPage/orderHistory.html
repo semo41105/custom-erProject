@@ -105,7 +105,8 @@
             <td><p th:text="${orderHistoryResponse.orderPrice}"></p></td>
             <td>
               <p th:text="${orderHistoryResponse.orderStatus}"></p>
-              <button th:if="${orderHistoryResponse.orderStatus.toString().equals('ORDER')}" name="orderCancelBtn" class="btn btn-primary" th:data-orderno="${orderHistoryResponse.orderNo}" style="background-color: #FC5030; border: none;">주문 취소</button>
+              <button th:if="${orderHistoryResponse.orderStatus.toString().equals('ORDER')}" name="orderCancelBtn" class="btn btn-primary"
+                      th:data-orderno="${orderHistoryResponse.orderNo}" style="background-color: #FC5030; border: none;">주문 취소</button>
             </td>
             <td><p th:data-ordernostatus="${orderHistoryResponse.orderNo}" th:text="${orderHistoryResponse.deliveryStatus}"></td>
           </tr>
