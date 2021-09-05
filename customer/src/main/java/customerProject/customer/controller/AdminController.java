@@ -1,6 +1,7 @@
 package customerProject.customer.controller;
 
 import customerProject.customer.dto.historyDto.DeliveryHistoryResponse;
+import customerProject.customer.dto.historyDto.DeliveryHistoryResponse2;
 import customerProject.customer.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,9 @@ public class AdminController {
     private DeliveryService deliveryService;
 
     @GetMapping("/admin")
-    public String adminOrder() {
+    public String adminOrder(Model model) {
+        List<DeliveryHistoryResponse2> deliveryHistoryList = deliveryService.findDeliveryHistoryAll2();
+        model.addAttribute("deliverys",deliveryHistoryList);
         return "admin/adminOrder";
     }
 
@@ -26,5 +29,7 @@ public class AdminController {
         model.addAttribute("deliverys",deliveryHistoryList);
         return "admin/adminDelivery";
     }
+
+
 
 }
