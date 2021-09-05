@@ -11,4 +11,5 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 public class Sticker extends Product{
+    int price = 2000;
 }
