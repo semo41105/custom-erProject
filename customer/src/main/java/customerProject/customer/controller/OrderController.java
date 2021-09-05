@@ -1,6 +1,7 @@
 package customerProject.customer.controller;
 
 import com.sun.istack.NotNull;
+import customerProject.customer.domain.enums.TType;
 import customerProject.customer.dto.ProductRequest;
 import customerProject.customer.dto.PurchaseDto;
 import customerProject.customer.dto.ShippingDto;
@@ -19,6 +20,34 @@ public class OrderController {
     @PostMapping("/order")
     public String custom(Model model, ProductRequest dto){
         model.addAttribute("ProductRequest", dto);
+       if(dto.getName().equals("티셔츠")){
+
+            if(dto.getType().equals(TType.SHORT)){
+                switch (dto.getSize()){
+                    case S:
+                        dto.setPNo(5L);
+                        break;
+                    case M:
+                        dto.setPNo(6L);
+                        break;
+                    case L:
+                        dto.setPNo(7L);
+                        break;
+                }
+            }else if(dto.getType().equals(TType.LONG)){
+                switch (dto.getSize()){
+                    case S:
+                        dto.setPNo(8L);
+                        break;
+                    case M:
+                        dto.setPNo(9L);
+                        break;
+                    case L:
+                        dto.setPNo(10L);
+                        break;
+                }
+            }
+        }
         model.addAttribute("PurchaseDto", new PurchaseDto());
 
         return "purchase/purchase";
