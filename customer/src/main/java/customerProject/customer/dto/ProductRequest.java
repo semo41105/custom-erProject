@@ -14,13 +14,17 @@ public class ProductRequest {
     private int quantity;
     private TSize size;
     private TType type;
+    private int price;
+    private Long pNo;
 
     @Builder
-    public ProductRequest(String name, String img, int quantity, TSize size, TType type) {
+    public ProductRequest(String name, String img, int quantity, TSize size, TType type, int price, Long pNo) {
         this.name = name;
         this.img = img;
         this.quantity = quantity;
         this.size = size;
         this.type = type;
+        this.price = price;
+        this.pNo = pNo;
     }
 }

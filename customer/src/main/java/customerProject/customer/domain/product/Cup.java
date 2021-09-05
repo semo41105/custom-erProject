@@ -11,4 +11,5 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 public class Cup extends Product{
+    int price = 8000;
 }
