@@ -1,4 +1,4 @@
-package customerProject.customer.dto.myPage;
+package customerProject.customer.dto.historyDto;
 
 import customerProject.customer.domain.enums.DeliveryStatus;
 import customerProject.customer.domain.enums.OrderStatus;
