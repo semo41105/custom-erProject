@@ -23,8 +23,16 @@
 
       for (const orderCancelBtn of orderCancelBtns) {
         orderCancelBtn.addEventListener('click', function (){
+
           var orderNo = this.dataset.orderno;
-          orderCancel(orderNo);
+          var deliveryStats = document.querySelector('p[data-ordernostatus="' + orderNo + '"]').innerText;
+          console.log(deliveryStats);
+
+          if (deliveryStats == 'COMPLETE') {
+            alert('주문 취소 실패 - 이미 배송 완료된 건입니다.');
+          }else{
+            orderCancel(orderNo);
+          }
         });
       }
 
@@ -91,9 +99,9 @@
             <td><p th:text="${orderHistoryResponse.orderPrice}"></p></td>
             <td>
               <p th:text="${orderHistoryResponse.orderStatus}"></p>
-              <button name="orderCancelBtn" class="btn btn-primary" th:data-orderno="${orderHistoryResponse.orderNo}" style="background-color: #FC5030; border: none;">주문 취소</button>
+              <button th:if="${orderHistoryResponse.orderStatus.toString().equals('ORDER')}" name="orderCancelBtn" class="btn btn-primary" th:data-orderno="${orderHistoryResponse.orderNo}" style="background-color: #FC5030; border: none;">주문 취소</button>
             </td>
-            <td th:text="${orderHistoryResponse.deliveryStatus}"></td>
+            <td><p th:data-ordernostatus="${orderHistoryResponse.orderNo}" th:text="${orderHistoryResponse.deliveryStatus}"></td>
           </tr>
         </table>
 
