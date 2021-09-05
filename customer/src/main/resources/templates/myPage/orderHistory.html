@@ -12,6 +12,63 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="/css/styles.css" rel="stylesheet"/>
+
+  <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+
+  <script>
+    window.addEventListener('DOMContentLoaded', function (){
+
+      var orderCancelBtns = document.querySelectorAll('button[name=orderCancelBtn]');
+
+      for (const orderCancelBtn of orderCancelBtns) {
+        orderCancelBtn.addEventListener('click', function (){
+
+          var orderNo = this.dataset.orderno;
+          var deliveryStats = document.querySelector('p[data-ordernostatus="' + orderNo + '"]').innerText;
+          console.log(deliveryStats);
+
+          if (deliveryStats == 'COMPLETE') {
+            alert('주문 취소 실패 - 이미 배송 완료된 건입니다.');
+          }else{
+            orderCancel(orderNo);
+          }
+        });
+      }
+
+
+
+
+
+
+
+
+    });
+
+
+    function orderCancel(orderNo) {
+      var request = {'orderNo': orderNo};
+
+      $.ajax({
+        type: "PATCH",
+        url: "/orderCancel",
+        data: JSON.stringify(request),
+        contentType : "application/json; charset=utf-8",
+        // dataType: "text",
+        // dataType을 지정하지 않으면 자동으로 알아서 파싱함 (dataType을 지정하지 않는게 오히려 좋을 수도?)
+        success: function (response){
+          console.log(response);
+          alert("주문을 정상적으로 취소하였습니다.");
+          location.reload();
+        }
+      });
+
+    }
+
+
+
+  </script>
+
 </head>
 <body class="d-flex flex-column">
 <main class="flex-shrink-0">
@@ -39,15 +96,18 @@
             <td>배송 상태</td>
           </tr>
           <tr th:each="orderHistoryResponse : ${orderHistoryResponseList}">
-            <td th:text="${orderHistoryResponse.orderNo}"></td>
-            <td th:text="${orderHistoryResponse.orderDate}"></td>
-            <td th:text="${orderHistoryResponse.productName}"></td>
-            <td th:text="${orderHistoryResponse.customImg}"></td>
-            <td th:text="${orderHistoryResponse.productPrice}"></td>
-            <td th:text="${orderHistoryResponse.orderCount}"></td>
-            <td th:text="${orderHistoryResponse.orderPrice}"></td>
-            <td th:text="${orderHistoryResponse.orderStatus}"></td>
-            <td th:text="${orderHistoryResponse.deliveryStatus}"></td>
+            <td><p th:text="${orderHistoryResponse.orderNo}"></p></td>
+            <td><p th:text="${orderHistoryResponse.changedDateFormat}"></p></td>
+            <td><p th:text="${orderHistoryResponse.productName}"></p></td>
+            <td><p th:text="${orderHistoryResponse.customImg}"></p></td>
+            <td><p th:text="${orderHistoryResponse.productPrice}"></p></td>
+            <td><p th:text="${orderHistoryResponse.orderCount}"></p></td>
+            <td><p th:text="${orderHistoryResponse.orderPrice}"></p></td>
+            <td>
+              <p th:text="${orderHistoryResponse.orderStatus}"></p>
+              <button th:if="${orderHistoryResponse.orderStatus.toString().equals('ORDER')}" name="orderCancelBtn" class="btn btn-primary" th:data-orderno="${orderHistoryResponse.orderNo}" style="background-color: #FC5030; border: none;">주문 취소</button>
+            </td>
+            <td><p th:data-ordernostatus="${orderHistoryResponse.orderNo}" th:text="${orderHistoryResponse.deliveryStatus}"></td>
           </tr>
         </table>
 
@@ -55,7 +115,6 @@
       </div>
     </div>
   </section>
-
 
 
 
