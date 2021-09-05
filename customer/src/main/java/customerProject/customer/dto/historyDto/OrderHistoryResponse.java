@@ -26,6 +26,7 @@ public class OrderHistoryResponse {
 
     @Builder
     public OrderHistoryResponse(Long orderNo, LocalDateTime orderDate, String productName, String customImg, int productPrice, int orderCount, int orderPrice, OrderStatus orderStatus, DeliveryStatus deliveryStatus) {
+
         this.orderNo = orderNo;
         this.orderDate = orderDate;
         this.productName = productName;

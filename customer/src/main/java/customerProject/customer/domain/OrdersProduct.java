@@ -1,14 +1,14 @@
 package customerProject.customer.domain;
 
 import customerProject.customer.domain.product.Product;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter @Setter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "orders_product")
 public class OrdersProduct {

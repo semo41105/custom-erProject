@@ -61,10 +61,12 @@ public class MainController {
     }
 
     @GetMapping("/customPage")
-    public String custom(Model model, @Param("name")String name, @Param("korName")String korName){
+    public String custom(Model model, @Param("name")String name, @Param("korName")String korName, @Param("price")int price, @Param("pNo")Long pNo){
         model.addAttribute("name", name);
         model.addAttribute("korName", korName);
         model.addAttribute("imgSrc", "/img/"+name+".png");
+        model.addAttribute("price", price);
+        model.addAttribute("pNo", pNo);
         model.addAttribute("ProductRequest", new ProductRequest());
         return "custom/custom";
     }
