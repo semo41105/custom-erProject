@@ -37,6 +37,10 @@
                                 <th>배송 번호</th>
                                 <th>주문 번호</th>
                                 <th>주문 날짜</th>
+                                <th>주문 상태</th>
+                                <th>주소 - 도시명</th>
+                                <th>주소 - 도로명</th>
+                                <th>주소 - 상세주소</th>
                                 <th>배송 상태</th>
                             </tr>
                             <tbody>
@@ -44,6 +48,10 @@
                                 <td th:text="${deliverys.deliveryNo}"></td>
                                 <td th:text="${deliverys.orderNo}"></td>
                                 <td th:text="${deliverys.orderDate}"></td>
+                                <td th:text="${deliverys.orderStatus}"></td>
+                                <td th:text="${deliverys.address.city}"></td>
+                                <td th:text="${deliverys.address.street}"></td>
+                                <td th:text="${deliverys.address.zipcode}"></td>
                                 <td th:text="${deliverys.deliveryStatus}"></td>
                             </tr>
                             </tbody>

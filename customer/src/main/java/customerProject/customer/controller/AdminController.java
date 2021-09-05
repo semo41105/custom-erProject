@@ -16,7 +16,9 @@ public class AdminController {
     private DeliveryService deliveryService;
 
     @GetMapping("/admin")
-    public String adminOrder() {
+    public String adminOrder(Model model) {
+        List<DeliveryHistoryResponse> deliveryHistoryList = deliveryService.findDeliveryHistoryAll();
+        model.addAttribute("deliverys",deliveryHistoryList);
         return "admin/adminOrder";
     }
 
@@ -26,5 +28,7 @@ public class AdminController {
         model.addAttribute("deliverys",deliveryHistoryList);
         return "admin/adminDelivery";
     }
+
+
 
 }
