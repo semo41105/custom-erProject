@@ -11,7 +11,11 @@ import java.util.List;
 @Repository
 public interface DeliveryRepository extends JpaRepository<Delivery, Long> {
 
+
+    Delivery findByOrdersNo(Long no);
+
     @Query("SELECT new customerProject.customer.dto.historyDto.DeliveryHistoryResponse(d.no, o.no, o.date, d.deliveryStatus) FROM Delivery d JOIN d.orders o")
     List<DeliveryHistoryResponse> findDeliveryHistoryList();
     
+
 }

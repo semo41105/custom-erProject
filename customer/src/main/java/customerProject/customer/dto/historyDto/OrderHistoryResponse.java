@@ -7,12 +7,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter @Setter
 @NoArgsConstructor
 public class OrderHistoryResponse {
 
     private Long orderNo;
-    private Long orderDate;
+    private LocalDateTime orderDate;
     private String productName;
     private String customImg;
     private int productPrice;
@@ -23,7 +25,8 @@ public class OrderHistoryResponse {
 
 
     @Builder
-    public OrderHistoryResponse(Long orderNo, Long orderDate, String productName, String customImg, int productPrice, int orderCount, int orderPrice, OrderStatus orderStatus, DeliveryStatus deliveryStatus) {
+    public OrderHistoryResponse(Long orderNo, LocalDateTime orderDate, String productName, String customImg, int productPrice, int orderCount, int orderPrice, OrderStatus orderStatus, DeliveryStatus deliveryStatus) {
+
         this.orderNo = orderNo;
         this.orderDate = orderDate;
         this.productName = productName;

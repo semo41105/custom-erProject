@@ -38,16 +38,16 @@
             <td>주문 상태</td>
             <td>배송 상태</td>
           </tr>
-          <tr>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
-            <td>1</td>
+          <tr th:each="orderHistoryResponse : ${orderHistoryResponseList}">
+            <td th:text="${orderHistoryResponse.orderNo}"></td>
+            <td th:text="${orderHistoryResponse.orderDate}"></td>
+            <td th:text="${orderHistoryResponse.productName}"></td>
+            <td th:text="${orderHistoryResponse.customImg}"></td>
+            <td th:text="${orderHistoryResponse.productPrice}"></td>
+            <td th:text="${orderHistoryResponse.orderCount}"></td>
+            <td th:text="${orderHistoryResponse.orderPrice}"></td>
+            <td th:text="${orderHistoryResponse.orderStatus}"></td>
+            <td th:text="${orderHistoryResponse.deliveryStatus}"></td>
           </tr>
         </table>
 
