@@ -15,6 +15,8 @@ import customerProject.customer.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -72,5 +74,16 @@ public class OrderHistoryService {
         orders.setStatus(OrderStatus.CANCEL);
 
         ordersRepository.save(orders);
+    }
+
+    public List<OrderHistoryResponse> dateFormatting(List<OrderHistoryResponse> orderHistoryResponseList) {
+        for (OrderHistoryResponse i : orderHistoryResponseList) {
+            LocalDateTime time = i.getOrderDate();
+            DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy년 M월 d일 a h시 m분");
+            String timeFormatting = time.format(dateTimeFormatter);
+            i.setChangedDateFormat(timeFormatting);
+        }
+
+        return orderHistoryResponseList;
     }
 }

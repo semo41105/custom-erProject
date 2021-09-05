@@ -23,10 +23,11 @@ public class OrderHistoryResponse {
     private OrderStatus orderStatus;
     private DeliveryStatus deliveryStatus;
 
+    private String changedDateFormat;
+
 
     @Builder
-    public OrderHistoryResponse(Long orderNo, LocalDateTime orderDate, String productName, String customImg, int productPrice, int orderCount, int orderPrice, OrderStatus orderStatus, DeliveryStatus deliveryStatus) {
-
+    public OrderHistoryResponse(Long orderNo, LocalDateTime orderDate, String productName, String customImg, int productPrice, int orderCount, int orderPrice, OrderStatus orderStatus, DeliveryStatus deliveryStatus, String changedDateFormat) {
         this.orderNo = orderNo;
         this.orderDate = orderDate;
         this.productName = productName;
@@ -36,6 +37,6 @@ public class OrderHistoryResponse {
         this.orderPrice = orderPrice;
         this.orderStatus = orderStatus;
         this.deliveryStatus = deliveryStatus;
+        this.changedDateFormat = changedDateFormat;
     }
-
 }

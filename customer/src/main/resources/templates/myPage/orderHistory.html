@@ -37,6 +37,12 @@
       }
 
 
+
+
+
+
+
+
     });
 
 
@@ -91,7 +97,7 @@
           </tr>
           <tr th:each="orderHistoryResponse : ${orderHistoryResponseList}">
             <td><p th:text="${orderHistoryResponse.orderNo}"></p></td>
-            <td><p th:text="${orderHistoryResponse.orderDate}"></p></td>
+            <td><p th:text="${orderHistoryResponse.changedDateFormat}"></p></td>
             <td><p th:text="${orderHistoryResponse.productName}"></p></td>
             <td><p th:text="${orderHistoryResponse.customImg}"></p></td>
             <td><p th:text="${orderHistoryResponse.productPrice}"></p></td>

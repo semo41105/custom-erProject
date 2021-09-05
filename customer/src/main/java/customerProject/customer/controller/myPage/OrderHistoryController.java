@@ -24,7 +24,11 @@ public class OrderHistoryController {
     @GetMapping("/orderHistory")
     public String orderHistory(Model model, @SessionAttribute("loginUser")UserDto loginUser) {
         List<OrderHistoryResponse> orderHistoryResponseList = orderHistoryService.getOrderHistory(loginUser);
-        model.addAttribute("orderHistoryResponseList", orderHistoryResponseList);
+
+        //주문일자 날짜포맷 변경한 후 모델에 담아서 화면으로 보냄
+        List<OrderHistoryResponse> orderHistoryResponseListDateFormat = orderHistoryService.dateFormatting(orderHistoryResponseList);
+
+        model.addAttribute("orderHistoryResponseList", orderHistoryResponseListDateFormat);  //이름 너무 길어서 name값은 ~List 까지만 넣었음
         return "myPage/orderHistory";
     }
 
