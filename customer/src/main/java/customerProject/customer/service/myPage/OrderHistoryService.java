@@ -14,6 +14,7 @@ import customerProject.customer.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,7 +36,7 @@ public class OrderHistoryService {
 
     //주문내역 리스트 생성
     private List<OrderHistoryResponse> createOrderHistoryList(List<Orders> orders) {
-        List<OrderHistoryResponse> orderHistoryResponseList = null;
+        List<OrderHistoryResponse> orderHistoryResponseList = new ArrayList<>();
 
         for (int i = 0; i < orders.size(); i ++){
             OrdersProduct ordersProduct = ordersProductRepository.findByOrdersNo(orders.get(i).getNo());
