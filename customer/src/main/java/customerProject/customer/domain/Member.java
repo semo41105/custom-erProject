@@ -32,5 +32,4 @@ public class Member {
     @Embedded
     private Address address;
 
-
 }

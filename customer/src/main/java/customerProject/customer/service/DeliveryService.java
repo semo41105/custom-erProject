@@ -1,6 +1,7 @@
 package customerProject.customer.service;
 
 import customerProject.customer.dto.historyDto.DeliveryHistoryResponse;
+import customerProject.customer.dto.historyDto.DeliveryHistoryResponse2;
 import customerProject.customer.repository.DeliveryRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,11 @@ public class DeliveryService {
     @Transactional
     public List<DeliveryHistoryResponse> findDeliveryHistoryAll(){
         return deliveryRepository.findDeliveryHistoryList();
+    }
+
+    @Transactional
+    public List<DeliveryHistoryResponse2> findDeliveryHistoryAll2(){
+        return deliveryRepository.findDeliveryHistoryList2();
     }
 
 }
